@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -15,13 +14,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->string('name');
-            $table->string('image');
-            $table->string('description');
+            $table->text('description');
+            $table->integer('stock');
             $table->decimal('price', 48, 4);
-            $table->bigInteger('stock');
+            $table->foreignId('product_category_id')->constrained('product_categories')->cascadeOnDelete();
+            $table->foreignId('product_type_id')->constrained('product_types')->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

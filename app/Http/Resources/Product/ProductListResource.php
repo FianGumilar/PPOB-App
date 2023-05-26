@@ -31,7 +31,7 @@ class ProductListResource extends ResourceCollection
             'name' => $data->name,
             'description' => $data->description,
             'preview_image' => $data->image,
-            'price' => (int)$data->price,
+            'price' => (int) $data->price,
             'price_formatted' => number_format($data->price, 2, ',', '.'),
             'stock' => $data->stock,
             'category_id' => $data->category_id,
@@ -51,7 +51,7 @@ class ProductListResource extends ResourceCollection
         return [
             "total" => $this->total(),
             "count" => $this->count(),
-            "per_page" => (int)$this->perPage(),
+            "per_page" => (int) $this->perPage(),
             "current_page" => $this->currentPage(),
             "total_pages" => $this->lastPage(),
             "links" => [

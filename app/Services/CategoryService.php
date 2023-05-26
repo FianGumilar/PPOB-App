@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Category;
+use App\Models\ProductCategory;
 
 class CategoryService
 {
@@ -10,7 +10,7 @@ class CategoryService
     {
         $search = $request->search;
 
-        $query = Category::query();
+        $query = ProductCategory::query();
 
         $query->when(request('search', false), function ($q) use ($search) {
             $q->where('name', 'like', '%' . $search . '%');
@@ -22,14 +22,14 @@ class CategoryService
     public function createData($request)
     {
         $inputs = $request->only(['name', 'description']);
-        $category = Category::create($inputs);
+        $category = ProductCategory::create($inputs);
 
         return $category;
     }
 
     public function deleteData($id)
     {
-        $category = Category::findOrFail($id);
+        $category = ProductCategory::findOrFail($id);
         $category->delete();
 
         return $category;
@@ -38,8 +38,8 @@ class CategoryService
     public function updateData($id, $request)
     {
         $inputs = $request->only(['name', 'description']);
-        
-        $category = Category::findOrFail($id);
+
+        $category = ProductCategory::findOrFail($id);
         $category->update($inputs);
 
         return $category;

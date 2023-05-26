@@ -17,18 +17,19 @@ class UserSeeder extends Seeder
     public function run()
     {
         $super_admin = User::updateOrCreate(
-        [
-            'email' => 'superadmin@pos.com'
-        ],
-        [
-            'name' => 'Super Admin',
-            'email' => 'superadmin@pos.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('rahasia123')
-        ]);
+            [
+                'email' => 'admin@gmail.com'
+            ],
+            [
+                'name' => 'Super Admin',
+                'email' => 'admin@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('rahasia123')
+            ]
+        );
         $super_admin->assignRole('super admin');
-        
-        for ($i=0; $i < 10 ; $i++) {
+
+        for ($i = 0; $i < 10; $i++) {
             $user = User::create([
                 'name' => fake()->name(),
                 'email' => fake()->unique()->safeEmail(),

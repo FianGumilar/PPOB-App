@@ -54,7 +54,7 @@ class ProductService
         $file = $product->image;
 
         // Upload the image if the new image exists
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $fileService = new FileService();
             $file = $fileService->uploadFile($request->file('image'));
         }
